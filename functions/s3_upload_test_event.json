@@ -1,0 +1,58 @@
+{
+  "version": "1.0",
+  "timestamp": "2021-04-07T13:49:27.659Z",
+  "requestContext": {
+    "requestId": "6c70362d-0ffb-4c24-bc47-13d96a68e1b4",
+    "functionArn": "arn:aws:lambda:us-west-2:059815327807:function:s3toccs:dev",
+    "condition": "RetriesExhausted",
+    "approximateInvokeCount": 3
+  },
+  "requestPayload": {
+    "Records": [
+      {
+        "eventVersion": "2.1",
+        "eventSource": "aws:s3",
+        "awsRegion": "us-west-2",
+        "eventTime": "2021-04-07T13:46:05.624Z",
+        "eventName": "ObjectCreated:Copy",
+        "userIdentity": {
+          "principalId": "AWS:AROAI4V4MK54IY6MLNEUO:i-0473db1a51aa5586c"
+        },
+        "requestParameters": {
+          "sourceIPAddress": "10.2.2.78"
+        },
+        "responseElements": {
+          "x-amz-request-id": "VAG2877JRFR92GFR",
+          "x-amz-id-2": "zZYHaHDHjTsAbPQFfxx9bbiPG31vD+vYJ7StVZCBlsEPJfEr3YXMJ6tmIg09KUVb65EvuEy2jlsfpmDKF2o5ez1OHCuRnjU0"
+        },
+        "s3": {
+          "s3SchemaVersion": "1.0",
+          "configurationId": "ZTAzYjM1YzQtMmQ5NC00ODAxLWI1MzQtYzNiMzA0Zjc0MzZi",
+          "bucket": {
+            "name": "bd-bqsn-bci",
+            "ownerIdentity": {
+              "principalId": "A1GJYC1MSXMQP6"
+            },
+            "arn": "arn:aws:s3:::bd-bqsn-bci"
+          },
+          "object": {
+            "key": "Staging/Samsung/Common/Samsung.csv",
+            "size": 12555,
+            "eTag": "29580467697f5de162ca4f5b275a34a5",
+            "sequencer": "00606DB7A143F05BD1"
+          }
+        }
+      }
+    ]
+  },
+  "responseContext": {
+    "statusCode": 200,
+    "executedVersion": "14",
+    "functionError": "Unhandled"
+  },
+  "responsePayload": {
+    "errorType": "string",
+    "errorMessage": "[ERROR] CCS responded Internal Server Error (HTTP500)",
+    "trace": []
+  }
+}
