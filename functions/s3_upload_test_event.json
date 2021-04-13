@@ -1,58 +1,22 @@
 {
-  "version": "1.0",
-  "timestamp": "2021-04-07T13:49:27.659Z",
-  "requestContext": {
-    "requestId": "6c70362d-0ffb-4c24-bc47-13d96a68e1b4",
-    "functionArn": "arn:aws:lambda:us-west-2:059815327807:function:s3toccs:dev",
-    "condition": "RetriesExhausted",
-    "approximateInvokeCount": 3
-  },
-  "requestPayload": {
-    "Records": [
-      {
-        "eventVersion": "2.1",
-        "eventSource": "aws:s3",
-        "awsRegion": "us-west-2",
-        "eventTime": "2021-04-07T13:46:05.624Z",
-        "eventName": "ObjectCreated:Copy",
-        "userIdentity": {
-          "principalId": "AWS:AROAI4V4MK54IY6MLNEUO:i-0473db1a51aa5586c"
-        },
-        "requestParameters": {
-          "sourceIPAddress": "10.2.2.78"
-        },
-        "responseElements": {
-          "x-amz-request-id": "VAG2877JRFR92GFR",
-          "x-amz-id-2": "zZYHaHDHjTsAbPQFfxx9bbiPG31vD+vYJ7StVZCBlsEPJfEr3YXMJ6tmIg09KUVb65EvuEy2jlsfpmDKF2o5ez1OHCuRnjU0"
-        },
-        "s3": {
-          "s3SchemaVersion": "1.0",
-          "configurationId": "ZTAzYjM1YzQtMmQ5NC00ODAxLWI1MzQtYzNiMzA0Zjc0MzZi",
-          "bucket": {
-            "name": "bd-bqsn-bci",
-            "ownerIdentity": {
-              "principalId": "A1GJYC1MSXMQP6"
-            },
-            "arn": "arn:aws:s3:::bd-bqsn-bci"
-          },
-          "object": {
-            "key": "Staging/Samsung/Common/Samsung.csv",
-            "size": 12555,
-            "eTag": "29580467697f5de162ca4f5b275a34a5",
-            "sequencer": "00606DB7A143F05BD1"
-          }
-        }
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-west-2:059815327807:s3toccs-lambda-failures:a1f42b10-39d9-4e14-9617-942d0d1d1393",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "f908a919-ff63-5412-8a71-f1f663fbecc1",
+        "TopicArn": "arn:aws:sns:us-west-2:059815327807:s3toccs-lambda-failures",
+        "Subject": null,
+        "Message": "{\"version\":\"1.0\",\"timestamp\":\"2021-04-13T13:19:19.968Z\",\"requestContext\":{\"requestId\":\"b148d8f4-0ef6-40a1-85ca-d27eaacb9fc9\",\"functionArn\":\"arn:aws:lambda:us-west-2:059815327807:function:s3toccs:dev\",\"condition\":\"RetriesExhausted\",\"approximateInvokeCount\":3},\"requestPayload\":{\"Records\":[{\"eventVersion\":\"2.1\",\"eventSource\":\"aws:s3\",\"awsRegion\":\"us-west-2\",\"eventTime\":\"2021-04-13T13:16:08.241Z\",\"eventName\":\"ObjectCreated:Put\",\"userIdentity\":{\"principalId\":\"AWS:AROAQ33KFPA7ZMSAR4C3A:maxim.putilin\"},\"requestParameters\":{\"sourceIPAddress\":\"117.2.120.47\"},\"responseElements\":{\"x-amz-request-id\":\"W60RQTPVWRP2J5MW\",\"x-amz-id-2\":\"LFjkWnqdjeUPTJ3FsypDQyfGMXw258qenMDAgvqhLTR2jXlfD9+GUWPuX6Uv4zBM+jIElQ0bSoqjx/jJXUMlNgOGGjqBGryS\"},\"s3\":{\"s3SchemaVersion\":\"1.0\",\"configurationId\":\"4e078a93-18cc-41b0-aba0-c2808fb9099f\",\"bucket\":{\"name\":\"bd-bqsn-itops\",\"ownerIdentity\":{\"principalId\":\"A1GJYC1MSXMQP6\"},\"arn\":\"arn:aws:s3:::bd-bqsn-itops\"},\"object\":{\"key\":\"MasterData/AutomatedImport/DEVOPS-3508.csv\",\"size\":0,\"eTag\":\"d41d8cd98f00b204e9800998ecf8427e\",\"sequencer\":\"006075999ABE470300\"}}}]},\"responseContext\":{\"statusCode\":200,\"executedVersion\":\"14\",\"functionError\":\"Unhandled\"},\"responsePayload\":{\"errorType\":\"TypeError\",\"errorMessage\":\"Cannot read property 'toLowerCase' of undefined\",\"trace\":[\"TypeError: Cannot read property 'toLowerCase' of undefined\",\"    at Runtime.exports.handler (/var/task/s3toccs.js:51:34)\",\"    at Runtime.handleOnce (/var/runtime/Runtime.js:66:25)\"]}}",
+        "Timestamp": "2021-04-13T13:19:20.043Z",
+        "SignatureVersion": "1",
+        "Signature": "LbcKDDJcLn3BcxHQKJo3HO5cujuS4VvEVbYLbLi2oxl83lMBqKD89TtQrIGkJDd8FjJd+s6HotuQ7bv+ImmHbXUjRGLo95KDw9TGHa6ZTPtiT4z5PWuOz0fYEtBZHRu8kiEPSRtP8TVxvU5A6vWUqMN/T5fru2OXuD5juyDGZDsErWQyN/1PPX90w8bCqNx29SfFAt1tFc3Q4jpQkiHGl7e8KAdK5HQrloQfzQ29qChwjtOoh7jp/6uI/oX3ST/GWKQT0MEFBAXxXzPkCK3qCFuNcQT9PqHF08PUa/57pATH/Nsqma90yamc0V+j89N52WU3QP6XUxex1utwW0is6A==",
+        "SigningCertUrl": "https://sns.us-west-2.amazonaws.com/SimpleNotificationService-010a507c1833636cd94bdb98bd93083a.pem",
+        "UnsubscribeUrl": "https://sns.us-west-2.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-west-2:059815327807:s3toccs-lambda-failures:a1f42b10-39d9-4e14-9617-942d0d1d1393",
+        "MessageAttributes": {}
       }
-    ]
-  },
-  "responseContext": {
-    "statusCode": 200,
-    "executedVersion": "14",
-    "functionError": "Unhandled"
-  },
-  "responsePayload": {
-    "errorType": "string",
-    "errorMessage": "[ERROR] CCS responded Internal Server Error (HTTP500)",
-    "trace": []
-  }
+    }
+  ]
 }
