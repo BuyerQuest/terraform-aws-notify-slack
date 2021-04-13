@@ -4,8 +4,22 @@ var util = require('util');
 exports.handler = function (event, context) {
   //console.log('[DEBUG] Received event:', JSON.stringify(event, null, 2));
 
-  var slack_text = ""
-  eval("slack_text=" + process.env.SLACK_MESSAGE);
+  var message_object = JSON.parse(event.Records[0].Sns.Message);
+  var slack_text = "";
+  var valid_code = true;
+  try {
+    eval(process.env.SLACK_MESSAGE); // Slack message snippet code test
+  } catch (e) {
+    if (e instanceof Error) {
+      valid_code = false;
+      slack_text = '*[ERROR]* Problem with Slack message snippet/received event data: ' + e.message;
+      console.warn('[ERROR] Problem with Slack message snippet/received event data: ' + e.message);
+    }
+  } finally {
+    if (valid_code) {
+      eval("slack_text=" + process.env.SLACK_MESSAGE);
+    }
+  }
 
   var postData = {
     "channel": process.env.SLACK_CHANNEL,
