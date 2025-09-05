@@ -21,6 +21,9 @@ locals {
     ),
     0,
   )
+  lambda_file      = "${path.module}/functions/snsToSlack.js"
+  lambda_archive   = "${path.module}/functions/notify_slack.zip"
+  lambda_handler   = split(".", basename(local.lambda_file))[0]
 }
 
 resource "aws_cloudwatch_log_group" "lambda" {
@@ -51,30 +54,12 @@ resource "aws_lambda_permission" "sns_notify_slack" {
   source_arn    = local.sns_topic_arn
 }
 
-data "null_data_source" "lambda_file" {
-  inputs = {
-    filename = "${path.module}/functions/snsToSlack.js"
-  }
-}
-
-data "null_data_source" "lambda_archive" {
-  inputs = {
-    filename = "${path.module}/functions/notify_slack.zip"
-  }
-}
-
-data "null_data_source" "lambda_handler" {
-  inputs = {
-    handler = split(".", basename(data.null_data_source.lambda_file.outputs.filename))[0]
-  }
-}
-
 data "archive_file" "notify_slack" {
   count = var.create ? 1 : 0
 
   type        = "zip"
-  source_file = data.null_data_source.lambda_file.outputs.filename
-  output_path = data.null_data_source.lambda_archive.outputs.filename
+  source_file = local.lambda_file
+  output_path = local.lambda_archive
 }
 
 resource "aws_lambda_function" "notify_slack" {
@@ -86,7 +71,7 @@ resource "aws_lambda_function" "notify_slack" {
   description   = var.lambda_description
 
   role                           = aws_iam_role.lambda[0].arn
-  handler                        = "${data.null_data_source.lambda_handler.outputs.handler}.handler"
+  handler                        = "${local.lambda_handler}.handler"
   source_code_hash               = data.archive_file.notify_slack[0].output_base64sha256
   runtime                        = "nodejs22.x"
   timeout                        = 3
@@ -109,7 +94,6 @@ resource "aws_lambda_function" "notify_slack" {
   lifecycle {
     ignore_changes = [
       filename,
-      last_modified,
     ]
   }
 
