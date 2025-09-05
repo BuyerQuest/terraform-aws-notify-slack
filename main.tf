@@ -88,7 +88,7 @@ resource "aws_lambda_function" "notify_slack" {
   role                           = aws_iam_role.lambda[0].arn
   handler                        = "${data.null_data_source.lambda_handler.outputs.handler}.handler"
   source_code_hash               = data.archive_file.notify_slack[0].output_base64sha256
-  runtime                        = "nodejs"
+  runtime                        = "nodejs22.x"
   timeout                        = 3
   kms_key_arn                    = var.kms_key_arn
   reserved_concurrent_executions = var.reserved_concurrent_executions
